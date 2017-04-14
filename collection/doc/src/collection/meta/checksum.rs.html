@@ -86,6 +86,9 @@
 <span id="42">42</span>
 <span id="43">43</span>
 <span id="44">44</span>
+<span id="45">45</span>
+<span id="46">46</span>
+<span id="47">47</span>
 </pre><pre class='rust '>
 <span class='kw'>use</span> <span class='ident'>seahash</span>::<span class='ident'>SeaHasher</span>;
 
@@ -97,10 +100,12 @@
 
 <span class='kw'>use</span> <span class='ident'>collection</span>::<span class='ident'>Collection</span>;
 
+<span class='doccomment'>/// `T` is able to be checksummed.</span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Clone</span>, <span class='ident'>PartialEq</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>CheckSum</span><span class='op'>&lt;</span><span class='ident'>T</span><span class='op'>&gt;</span>(<span class='ident'>T</span>);
 
 <span class='kw'>impl</span><span class='op'>&lt;</span><span class='ident'>T</span><span class='op'>&gt;</span> <span class='ident'>CheckSum</span><span class='op'>&lt;</span><span class='ident'>T</span><span class='op'>&gt;</span> {
+    <span class='doccomment'>/// Construct a new CheckSum</span>
     <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>new</span>(<span class='ident'>t</span>: <span class='ident'>T</span>) <span class='op'>-&gt;</span> <span class='self'>Self</span> {
         <span class='ident'>CheckSum</span>(<span class='ident'>t</span>)
     }
@@ -116,7 +121,8 @@
     }
 
     <span class='kw'>fn</span> <span class='ident'>merge</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>other</span>: <span class='kw-2'>&amp;</span><span class='self'>Self</span>, <span class='ident'>_p</span>: <span class='ident'>PhantomData</span><span class='op'>&lt;</span><span class='ident'>T</span><span class='op'>&gt;</span>) {
-        <span class='comment'>// `(a ^ b) + a` does not commute!</span>
+        <span class='comment'>// `(a ^ b) + a` does not commute! Which means checksum</span>
+        <span class='comment'>// is order-dependant</span>
         <span class='kw'>let</span> <span class='ident'>a</span> <span class='op'>=</span> <span class='self'>self</span>.<span class='number'>0</span>;
         <span class='kw'>let</span> <span class='ident'>b</span> <span class='op'>=</span> <span class='ident'>other</span>.<span class='number'>0</span>;
         <span class='self'>self</span>.<span class='number'>0</span> <span class='op'>=</span> (<span class='ident'>a</span> <span class='op'>^</span> <span class='ident'>b</span>).<span class='ident'>wrapping_add</span>(<span class='ident'>a</span>);

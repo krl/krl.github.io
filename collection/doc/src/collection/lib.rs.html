@@ -76,45 +76,8 @@
 <span id="32">32</span>
 <span id="33">33</span>
 <span id="34">34</span>
-<span id="35">35</span>
-<span id="36">36</span>
-<span id="37">37</span>
-<span id="38">38</span>
-<span id="39">39</span>
-<span id="40">40</span>
-<span id="41">41</span>
-<span id="42">42</span>
-<span id="43">43</span>
-<span id="44">44</span>
-<span id="45">45</span>
-<span id="46">46</span>
-<span id="47">47</span>
-<span id="48">48</span>
 </pre><pre class='rust '>
-<span class='doccomment'>//! This library implements persistent datastructures for Rust, with</span>
-<span class='doccomment'>//! efficient, with the complexity of the union operation can be sublinear</span>
-<span class='doccomment'>//! in practical cases.</span>
-
-<span class='doccomment'>//! # Deterministically balanced search trees</span>
-<span class='doccomment'>//! This is achieved by using deterministically balanced trees, where the</span>
-<span class='doccomment'>//! split-points of the tree are determined by the `Weight` of the elements</span>
-<span class='doccomment'>//! in the collection.</span>
-<span class='doccomment'>//!</span>
-<span class='doccomment'>//! That T implements Weight, means that `T`, or parts of `T` can be Hashed</span>
-<span class='doccomment'>//! this hash is then used to determine the weight, essentialy by counting</span>
-<span class='doccomment'>//! leading zeroes in the hash.</span>
-<span class='doccomment'>//!</span>
-<span class='doccomment'>//! # Copy on write, and structural sharing</span>
-<span class='doccomment'>//! Cloning a collection is a constant time operation. This is achieved by</span>
-<span class='doccomment'>//! the Stash abstraction, which keeps a collection of Nodes, referenced by</span>
-<span class='doccomment'>//! a `Location` indirection.</span>
-<span class='doccomment'>//!</span>
-<span class='doccomment'>//! # Pluggable metadata</span>
-<span class='doccomment'>//! Each collection can carry different kinds of metadata, metadata is defined</span>
-<span class='doccomment'>//! as the operations `&amp;T -&gt; Meta&lt;T&gt;`, and a binary operation combining</span>
-<span class='doccomment'>//! two `Meta&lt;T&gt;` with each other. So, to implement a Set, you would use</span>
-<span class='doccomment'>//! `Max&lt;T&gt;`, and if you also want constant-time equality checking, you would</span>
-<span class='doccomment'>//! add `CheckSum&lt;T&gt;</span>
+<span class='doccomment'>//! Persistent datastructure</span>
 
 <span class='attribute'>#<span class='op'>!</span>[<span class='ident'>deny</span>(<span class='ident'>missing_docs</span>)]</span>
 <span class='attribute'>#[<span class='ident'>macro_use</span>]</span>
@@ -139,6 +102,15 @@
 }
 
 <span class='kw'>pub</span> <span class='kw'>use</span> <span class='ident'>collection</span>::<span class='ident'>Collection</span>;
+
+<span class='kw'>pub</span> <span class='kw'>use</span> <span class='ident'>ops</span>::<span class='ident'>vector</span>::<span class='ident'>VectorOps</span>;
+<span class='kw'>pub</span> <span class='kw'>use</span> <span class='ident'>ops</span>::<span class='ident'>map</span>::{<span class='ident'>MapOps</span>, <span class='ident'>MapOpsKeySum</span>};
+<span class='kw'>pub</span> <span class='kw'>use</span> <span class='ident'>ops</span>::<span class='ident'>set</span>::{<span class='ident'>SetOps</span>, <span class='ident'>SetOpsCheckSum</span>};
+
+<span class='kw'>pub</span> <span class='kw'>use</span> <span class='ident'>meta</span>::<span class='ident'>Meta</span>;
+<span class='kw'>pub</span> <span class='kw'>use</span> <span class='ident'>meta</span>::<span class='ident'>Max</span>;
+<span class='kw'>pub</span> <span class='kw'>use</span> <span class='ident'>meta</span>::<span class='ident'>CheckSum</span>;
+<span class='kw'>pub</span> <span class='kw'>use</span> <span class='ident'>meta</span>::<span class='ident'>Key</span>;
 </pre>
 </section>
     <section id='search' class="content hidden"></section>

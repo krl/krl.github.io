@@ -159,6 +159,9 @@
 <span id="115">115</span>
 <span id="116">116</span>
 <span id="117">117</span>
+<span id="118">118</span>
+<span id="119">119</span>
+<span id="120">120</span>
 </pre><pre class='rust '>
 <span class='kw'>use</span> <span class='ident'>seahash</span>::<span class='ident'>SeaHasher</span>;
 
@@ -172,6 +175,7 @@
 
 <span class='kw'>use</span> <span class='ident'>meta</span>::<span class='ident'>checksum</span>::<span class='ident'>CheckSum</span>;
 
+<span class='doccomment'>/// This `T` can be viewed as a Key-Value pair.</span>
 <span class='kw'>pub</span> <span class='kw'>trait</span> <span class='ident'>Keyed</span> {
     <span class='kw'>type</span> <span class='ident'>Key</span>: <span class='ident'>Val</span> <span class='op'>+</span> <span class='ident'>Ord</span>;
     <span class='kw'>type</span> <span class='ident'>Value</span>: <span class='ident'>Clone</span>;
@@ -181,6 +185,7 @@
     <span class='kw'>fn</span> <span class='ident'>value_mut</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='self'>Self</span>::<span class='ident'>Value</span>;
 }
 
+<span class='doccomment'>/// A key, K is usually `T::Key` where `T: Keyed`</span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Clone</span>, <span class='ident'>PartialEq</span>, <span class='ident'>Eq</span>, <span class='ident'>PartialOrd</span>, <span class='ident'>Ord</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>Key</span><span class='op'>&lt;</span><span class='ident'>K</span><span class='op'>&gt;</span>(<span class='ident'>K</span>);
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Clone</span>, <span class='ident'>PartialEq</span>)]</span>
@@ -201,6 +206,7 @@
 }
 
 <span class='kw'>impl</span><span class='op'>&lt;</span><span class='ident'>K</span><span class='op'>&gt;</span> <span class='ident'>Key</span><span class='op'>&lt;</span><span class='ident'>K</span><span class='op'>&gt;</span> {
+    <span class='doccomment'>/// Construct a new Key</span>
     <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>new</span>(<span class='ident'>key</span>: <span class='ident'>K</span>) <span class='op'>-&gt;</span> <span class='self'>Self</span> {
         <span class='ident'>Key</span>(<span class='ident'>key</span>)
     }

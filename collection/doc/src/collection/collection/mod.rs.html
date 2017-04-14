@@ -370,6 +370,7 @@
 <span id="326">326</span>
 <span id="327">327</span>
 <span id="328">328</span>
+<span id="329">329</span>
 </pre><pre class='rust '>
 <span class='kw'>use</span> <span class='ident'>Val</span>;
 
@@ -641,11 +642,12 @@
     }
 }
 
+<span class='attribute'>#[<span class='ident'>macro_export</span>]</span>
 <span class='macro'>macro_rules</span><span class='macro'>!</span> <span class='ident'>collection</span> {
     (<span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>collection</span>:<span class='ident'>ident</span><span class='op'>&lt;</span><span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>t</span>:<span class='ident'>ident</span><span class='op'>&gt;</span>
      {
          $( <span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>slot</span>:<span class='ident'>ident</span>: <span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>submeta</span>:<span class='ident'>ident</span><span class='op'>&lt;</span><span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>subtype</span>:<span class='ident'>ty</span><span class='op'>&gt;</span>, )<span class='op'>*</span>
-     } <span class='kw'>where</span> $(<span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>rest</span>:<span class='ident'>tt</span>)<span class='op'>*</span>) <span class='op'>=&gt;</span> (
+     } <span class='kw'>where</span> $(<span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>restraints</span>:<span class='ident'>tt</span>)<span class='op'>*</span>) <span class='op'>=&gt;</span> (
         <span class='kw'>mod</span> <span class='ident'>col</span> {
             <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>marker</span>::<span class='ident'>PhantomData</span>;
             <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>borrow</span>::<span class='ident'>Cow</span>;
@@ -655,7 +657,7 @@
             <span class='kw'>use</span> <span class='kw'>super</span>::<span class='op'>*</span>;
 
             <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Clone</span>)]</span>
-                <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>CollectionMeta</span><span class='op'>&lt;</span><span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>t</span><span class='op'>&gt;</span> <span class='kw'>where</span> <span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>t</span>: <span class='ident'>Val</span>, $(<span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>rest</span>)<span class='op'>*</span>
+                <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>CollectionMeta</span><span class='op'>&lt;</span><span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>t</span><span class='op'>&gt;</span> <span class='kw'>where</span> <span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>t</span>: <span class='ident'>Val</span>, $(<span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>restraints</span>)<span class='op'>*</span>
             {
                 <span class='ident'>_t</span>: <span class='ident'>PhantomData</span><span class='op'>&lt;</span><span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>t</span><span class='op'>&gt;</span>,
                 $(
@@ -663,7 +665,7 @@
                 )<span class='op'>*</span>
             }
 
-            <span class='kw'>impl</span><span class='op'>&lt;</span><span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>t</span><span class='op'>&gt;</span> <span class='ident'>Meta</span><span class='op'>&lt;</span><span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>t</span><span class='op'>&gt;</span> <span class='kw'>for</span> <span class='ident'>CollectionMeta</span><span class='op'>&lt;</span><span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>t</span><span class='op'>&gt;</span> <span class='kw'>where</span> <span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>t</span>: <span class='ident'>Val</span>, $(<span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>rest</span>)<span class='op'>*</span> {
+            <span class='kw'>impl</span><span class='op'>&lt;</span><span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>t</span><span class='op'>&gt;</span> <span class='ident'>Meta</span><span class='op'>&lt;</span><span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>t</span><span class='op'>&gt;</span> <span class='kw'>for</span> <span class='ident'>CollectionMeta</span><span class='op'>&lt;</span><span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>t</span><span class='op'>&gt;</span> <span class='kw'>where</span> <span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>t</span>: <span class='ident'>Val</span>, $(<span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>restraints</span>)<span class='op'>*</span> {
                     <span class='kw'>fn</span> <span class='ident'>from_t</span>(<span class='ident'>t</span>: <span class='kw-2'>&amp;</span><span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>t</span>) <span class='op'>-&gt;</span> <span class='self'>Self</span> {
                         <span class='ident'>CollectionMeta</span> {
                             <span class='ident'>_t</span>: <span class='ident'>PhantomData</span>,
@@ -682,7 +684,7 @@
             <span class='macro'>macro_rules</span><span class='macro'>!</span> <span class='ident'>as_ref</span> {
                 (<span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>_submeta</span>:<span class='ident'>ident</span>, <span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>_subtype</span>:<span class='ident'>ty</span>, <span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>_slot</span>:<span class='ident'>ident</span>) <span class='op'>=&gt;</span> (
                     <span class='kw'>impl</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span>, <span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>t</span><span class='op'>&gt;</span> <span class='ident'>SubMeta</span><span class='op'>&lt;</span><span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>_submeta</span><span class='op'>&lt;</span><span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>_subtype</span><span class='op'>&gt;&gt;</span>
-                        <span class='kw'>for</span> <span class='ident'>CollectionMeta</span><span class='op'>&lt;</span><span class='ident'>T</span><span class='op'>&gt;</span> <span class='kw'>where</span> <span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>t</span>: <span class='ident'>Val</span>, $(<span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>rest</span>)<span class='op'>*</span>
+                        <span class='kw'>for</span> <span class='ident'>CollectionMeta</span><span class='op'>&lt;</span><span class='ident'>T</span><span class='op'>&gt;</span> <span class='kw'>where</span> <span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>t</span>: <span class='ident'>Val</span>, $(<span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>restraints</span>)<span class='op'>*</span>
                     {
                         <span class='kw'>fn</span> <span class='ident'>submeta</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='ident'>Cow</span><span class='op'>&lt;</span><span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>_submeta</span><span class='op'>&lt;</span><span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>_subtype</span><span class='op'>&gt;&gt;</span> {
                             <span class='ident'>Cow</span>::<span class='ident'>Borrowed</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>.<span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>_slot</span>)

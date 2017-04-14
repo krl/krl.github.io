@@ -47,33 +47,25 @@
                    <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
                        [<span class='inner'>&#x2212;</span>]
                    </a>
-               </span><a class='srclink' href='../src/collection/lib.rs.html#1-48' title='goto source code'>[src]</a></span></h1>
-<div class='docblock'><p>This library implements persistent datastructures for Rust, with
-efficient, with the complexity of the union operation can be sublinear
-in practical cases.</p>
-
-<h1 id='deterministically-balanced-search-trees' class='section-header'><a href='#deterministically-balanced-search-trees'>Deterministically balanced search trees</a></h1>
-<p>This is achieved by using deterministically balanced trees, where the
-split-points of the tree are determined by the <code>Weight</code> of the elements
-in the collection.</p>
-
-<p>That T implements Weight, means that <code>T</code>, or parts of <code>T</code> can be Hashed
-this hash is then used to determine the weight, essentialy by counting
-leading zeroes in the hash.</p>
-
-<h1 id='copy-on-write-and-structural-sharing' class='section-header'><a href='#copy-on-write-and-structural-sharing'>Copy on write, and structural sharing</a></h1>
-<p>Cloning a collection is a constant time operation. This is achieved by
-the Stash abstraction, which keeps a collection of Nodes, referenced by
-a <code>Location</code> indirection.</p>
-
-<h1 id='pluggable-metadata' class='section-header'><a href='#pluggable-metadata'>Pluggable metadata</a></h1>
-<p>Each collection can carry different kinds of metadata, metadata is defined
-as the operations <code>&amp;T -&gt; Meta&lt;T&gt;</code>, and a binary operation combining
-two <code>Meta&lt;T&gt;</code> with each other. So, to implement a Set, you would use
-<code>Max&lt;T&gt;</code>, and if you also want constant-time equality checking, you would
-add `CheckSum<T></p>
-</div><h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
+               </span><a class='srclink' href='../src/collection/lib.rs.html#1-34' title='goto source code'>[src]</a></span></h1>
+<div class='docblock'><p>Persistent datastructure</p>
+</div><h2 id='macros' class='section-header'><a href="#macros">Macros</a></h2>
 <table>
+                       <tr class=' module-item'>
+                           <td><a class='macro' href='macro.collection.html'
+                                  title='collection::collection'>collection</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr></table><h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class='struct' href='struct.CheckSum.html'
+                                  title='collection::CheckSum'>CheckSum</a></td>
+                           <td class='docblock-short'>
+                                <p><code>T</code> is able to be checksummed.</p>
+                           </td>
+                       </tr>
                        <tr class=' module-item'>
                            <td><a class='struct' href='struct.Collection.html'
                                   title='collection::Collection'>Collection</a></td>
@@ -81,14 +73,70 @@ add `CheckSum<T></p>
                                 <p>A collection of elements of type T,
 with metadata of type M.</p>
                            </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='struct' href='struct.Key.html'
+                                  title='collection::Key'>Key</a></td>
+                           <td class='docblock-short'>
+                                <p>A key, K is usually <code>T::Key</code> where <code>T: Keyed</code></p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='struct' href='struct.Max.html'
+                                  title='collection::Max'>Max</a></td>
+                           <td class='docblock-short'>
+                                <p>Metadata for the maximum <code>T</code> in subtree.</p>
+                           </td>
                        </tr></table><h2 id='traits' class='section-header'><a href="#traits">Traits</a></h2>
 <table>
+                       <tr class=' module-item'>
+                           <td><a class='trait' href='trait.MapOps.html'
+                                  title='collection::MapOps'>MapOps</a></td>
+                           <td class='docblock-short'>
+                                <p>Map operations on a Collection</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='trait' href='trait.MapOpsKeySum.html'
+                                  title='collection::MapOpsKeySum'>MapOpsKeySum</a></td>
+                           <td class='docblock-short'>
+                                <p>Operations on a map with <code>KeySum</code> metadata</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='trait' href='trait.Meta.html'
+                                  title='collection::Meta'>Meta</a></td>
+                           <td class='docblock-short'>
+                                <p>Metadata for <code>T</code></p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='trait' href='trait.SetOps.html'
+                                  title='collection::SetOps'>SetOps</a></td>
+                           <td class='docblock-short'>
+                                <p>Set operations on a Collection</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='trait' href='trait.SetOpsCheckSum.html'
+                                  title='collection::SetOpsCheckSum'>SetOpsCheckSum</a></td>
+                           <td class='docblock-short'>
+                                <p>Set operations on Checksummed sets</p>
+                           </td>
+                       </tr>
                        <tr class=' module-item'>
                            <td><a class='trait' href='trait.Val.html'
                                   title='collection::Val'>Val</a></td>
                            <td class='docblock-short'>
                                 <p>A value that can be put into a Collection.
 Has to be clonable, and have impl the <code>tree::weight::Weight</code> trait</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='trait' href='trait.VectorOps.html'
+                                  title='collection::VectorOps'>VectorOps</a></td>
+                           <td class='docblock-short'>
+                                <p>Vector Operations on a Collection</p>
                            </td>
                        </tr></table></section>
     <section id='search' class="content hidden"></section>
