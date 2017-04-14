@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["Collection","A collection of elements of type T, with metadata of type M."]],"trait":[["Val","A value that can be put into a Collection. Has to be clonable, and have impl the `tree::weight::Weight` trait"]]});

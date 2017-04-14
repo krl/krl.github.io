@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `collection` crate.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, collection">
+
+    <title>collection - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'></p><script>window.sidebarCurrent = {name: 'collection', ty: 'mod', relpath: '../'};</script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content mod">
+<h1 class='fqn'><span class='in-band'>Crate <a class='mod' href=''>collection</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../src/collection/lib.rs.html#1-48' title='goto source code'>[src]</a></span></h1>
+<div class='docblock'><p>This library implements persistent datastructures for Rust, with
+efficient, with the complexity of the union operation can be sublinear
+in practical cases.</p>
+
+<h1 id='deterministically-balanced-search-trees' class='section-header'><a href='#deterministically-balanced-search-trees'>Deterministically balanced search trees</a></h1>
+<p>This is achieved by using deterministically balanced trees, where the
+split-points of the tree are determined by the <code>Weight</code> of the elements
+in the collection.</p>
+
+<p>That T implements Weight, means that <code>T</code>, or parts of <code>T</code> can be Hashed
+this hash is then used to determine the weight, essentialy by counting
+leading zeroes in the hash.</p>
+
+<h1 id='copy-on-write-and-structural-sharing' class='section-header'><a href='#copy-on-write-and-structural-sharing'>Copy on write, and structural sharing</a></h1>
+<p>Cloning a collection is a constant time operation. This is achieved by
+the Stash abstraction, which keeps a collection of Nodes, referenced by
+a <code>Location</code> indirection.</p>
+
+<h1 id='pluggable-metadata' class='section-header'><a href='#pluggable-metadata'>Pluggable metadata</a></h1>
+<p>Each collection can carry different kinds of metadata, metadata is defined
+as the operations <code>&amp;T -&gt; Meta&lt;T&gt;</code>, and a binary operation combining
+two <code>Meta&lt;T&gt;</code> with each other. So, to implement a Set, you would use
+<code>Max&lt;T&gt;</code>, and if you also want constant-time equality checking, you would
+add `CheckSum<T></p>
+</div><h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class='struct' href='struct.Collection.html'
+                                  title='collection::Collection'>Collection</a></td>
+                           <td class='docblock-short'>
+                                <p>A collection of elements of type T,
+with metadata of type M.</p>
+                           </td>
+                       </tr></table><h2 id='traits' class='section-header'><a href="#traits">Traits</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class='trait' href='trait.Val.html'
+                                  title='collection::Val'>Val</a></td>
+                           <td class='docblock-short'>
+                                <p>A value that can be put into a Collection.
+Has to be clonable, and have impl the <code>tree::weight::Weight</code> trait</p>
+                           </td>
+                       </tr></table></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../";
+        window.currentCrate = "collection";
+    </script>
+    <script src="../jquery.js"></script>
+    <script src="../main.js"></script>
+    <script defer src="../search-index.js"></script>
+</body>
+</html>

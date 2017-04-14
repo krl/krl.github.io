@@ -1,0 +1,1 @@
+initSidebarItems({"macro":[["trait_group","Create a new trait that acts like an alias or “group” of a bunch of traits."]]});
