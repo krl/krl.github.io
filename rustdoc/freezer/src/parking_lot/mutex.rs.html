@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="rustdoc">
-    <meta name="description" content="Source to the Rust file `/home/krl/.cargo/registry/src/github.com-1ecc6299db9ec823/parking_lot-0.4.0/src/mutex.rs`.">
+    <meta name="description" content="Source to the Rust file `/home/krl/.cargo/registry/src/github.com-1ecc6299db9ec823/parking_lot-0.4.3/src/mutex.rs`.">
     <meta name="keywords" content="rust, rustlang, rust-lang">
 
     <title>mutex.rs.html -- source</title>
@@ -555,6 +555,8 @@
 <span id="510">510</span>
 <span id="511">511</span>
 <span id="512">512</span>
+<span id="513">513</span>
+<span id="514">514</span>
 </pre><pre class="rust ">
 <span class="comment">// Copyright 2016 Amanieu d&#39;Antras</span>
 <span class="comment">//</span>
@@ -567,6 +569,7 @@
 <span class="kw">use</span> <span class="ident">std</span>::<span class="ident">ops</span>::{<span class="ident">Deref</span>, <span class="ident">DerefMut</span>};
 <span class="kw">use</span> <span class="ident">std</span>::<span class="ident">time</span>::{<span class="ident">Duration</span>, <span class="ident">Instant</span>};
 <span class="kw">use</span> <span class="ident">std</span>::<span class="ident">fmt</span>;
+<span class="kw">use</span> <span class="ident">std</span>::<span class="ident">mem</span>;
 <span class="kw">use</span> <span class="ident">std</span>::<span class="ident">marker</span>::<span class="ident">PhantomData</span>;
 <span class="kw">use</span> <span class="ident">raw_mutex</span>::<span class="ident">RawMutex</span>;
 
@@ -858,6 +861,7 @@
     <span class="attribute">#[<span class="ident">inline</span>]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">unlock_fair</span>(<span class="self">self</span>) {
         <span class="self">self</span>.<span class="ident">mutex</span>.<span class="ident">raw</span>.<span class="ident">unlock</span>(<span class="bool-val">true</span>);
+        <span class="ident">mem</span>::<span class="ident">forget</span>(<span class="self">self</span>);
     }
 }
 

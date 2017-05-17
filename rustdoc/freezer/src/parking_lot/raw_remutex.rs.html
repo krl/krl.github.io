@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="rustdoc">
-    <meta name="description" content="Source to the Rust file `/home/krl/.cargo/registry/src/github.com-1ecc6299db9ec823/parking_lot-0.4.0/src/raw_remutex.rs`.">
+    <meta name="description" content="Source to the Rust file `/home/krl/.cargo/registry/src/github.com-1ecc6299db9ec823/parking_lot-0.4.3/src/raw_remutex.rs`.">
     <meta name="keywords" content="rust, rustlang, rust-lang">
 
     <title>raw_remutex.rs.html -- source</title>
@@ -178,7 +178,7 @@
     <span class="comment">// reserved value to indicate an empty slot. We instead fall</span>
     <span class="comment">// back to using the address of a thread-local variable, which</span>
     <span class="comment">// is slightly slower but guaranteed to produce a non-zero value.</span>
-    <span class="macro">thread_local</span><span class="macro">!</span>(<span class="kw">static</span> <span class="ident">KEY</span>: <span class="ident">u8</span> <span class="op">=</span> <span class="kw">unsafe</span> { <span class="ident">std</span>::<span class="ident">mem</span>::<span class="ident">uninitialized</span>() });
+    <span class="macro">thread_local</span><span class="macro">!</span>(<span class="kw">static</span> <span class="ident">KEY</span>: <span class="ident">u8</span> <span class="op">=</span> <span class="kw">unsafe</span> { ::<span class="ident">std</span>::<span class="ident">mem</span>::<span class="ident">uninitialized</span>() });
     <span class="ident">KEY</span>.<span class="ident">with</span>(<span class="op">|</span><span class="ident">x</span><span class="op">|</span> <span class="ident">x</span> <span class="kw">as</span> <span class="kw-2">*</span><span class="kw">const</span> _ <span class="kw">as</span> <span class="ident">usize</span>)
 }
 

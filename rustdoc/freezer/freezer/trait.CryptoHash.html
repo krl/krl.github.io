@@ -48,12 +48,11 @@
                    <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
                        [<span class='inner'>&#x2212;</span>]
                    </a>
-               </span><a class='srclink' href='../src/freezer/hash.rs.html#14-26' title='goto source code'>[src]</a></span></h1>
-<pre class='rust trait'>pub trait CryptoHash <span class="where fmt-newline">where Self: 'static + <a class="trait" href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html" title="trait core::clone::Clone">Clone</a></span> {
+               </span><a class='srclink' href='../src/freezer/hash.rs.html#14-24' title='goto source code'>[src]</a></span></h1>
+<pre class='rust trait'>pub trait CryptoHash <span class="where fmt-newline">where Self: 'static + <a class="trait" href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html" title="trait core::clone::Clone">Clone</a>, Self::<a class="trait" href="../freezer/trait.CryptoHash.html" title="trait freezer::CryptoHash">Digest</a>: <a class="trait" href="../freezer/trait.Freeze.html" title="trait freezer::Freeze">Freeze</a>&lt;Self&gt;</span> {
     type <a href='#associatedtype.Digest' class="type">Digest</a>: <a class="trait" href="https://doc.rust-lang.org/nightly/core/convert/trait.AsRef.html" title="trait core::convert::AsRef">AsRef</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">[</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">]</a>&gt; + <a class="trait" href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html" title="trait core::clone::Clone">Clone</a> + <a class="trait" href="https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html" title="trait core::fmt::Debug">Debug</a>;
     type <a href='#associatedtype.State' class="type">State</a>: <a class="trait" href="https://doc.rust-lang.org/nightly/std/io/trait.Write.html" title="trait std::io::Write">Write</a> + CryptoHashState&lt;Self::<a class="trait" href="../freezer/trait.CryptoHash.html" title="trait freezer::CryptoHash">Digest</a>&gt;;
     fn <a href='#tymethod.new' class='fnname'>new</a>() -&gt; Self::<a class="trait" href="../freezer/trait.CryptoHash.html" title="trait freezer::CryptoHash">State</a>;
-    fn <a href='#tymethod.read_digest' class='fnname'>read_digest</a>(_: &amp;mut <a class="trait" href="https://doc.rust-lang.org/nightly/std/io/trait.Read.html" title="trait std::io::Read">Read</a>) -&gt; <a class="type" href="https://doc.rust-lang.org/nightly/std/io/error/type.Result.html" title="type std::io::error::Result">Result</a>&lt;Self::<a class="trait" href="../freezer/trait.CryptoHash.html" title="trait freezer::CryptoHash">Digest</a>&gt;;
 }</pre><div class='docblock'><p>A wrapper trait for a cryptographic hash function</p>
 </div>
             <h2 id='associated-types'>Associated Types</h2>
@@ -64,12 +63,10 @@
             <h2 id='required-methods'>Required Methods</h2>
             <div class='methods'>
         <h3 id='tymethod.new' class='method'><span id='new.v' class='invisible'><code>fn <a href='#tymethod.new' class='fnname'>new</a>() -&gt; Self::<a class="trait" href="../freezer/trait.CryptoHash.html" title="trait freezer::CryptoHash">State</a></code></span></h3><div class='docblock'><p>Constructor for a new hash-state</p>
-</div><h3 id='tymethod.read_digest' class='method'><span id='read_digest.v' class='invisible'><code>fn <a href='#tymethod.read_digest' class='fnname'>read_digest</a>(_: &amp;mut <a class="trait" href="https://doc.rust-lang.org/nightly/std/io/trait.Read.html" title="trait std::io::Read">Read</a>) -&gt; <a class="type" href="https://doc.rust-lang.org/nightly/std/io/error/type.Result.html" title="type std::io::error::Result">Result</a>&lt;Self::<a class="trait" href="../freezer/trait.CryptoHash.html" title="trait freezer::CryptoHash">Digest</a>&gt;</code></span></h3><div class='docblock'><p>Read <code>Self::Digest</code> from a bytestream</p>
 </div></div>
         <h2 id='implementors'>Implementors</h2>
         <ul class='item-list' id='implementors-list'>
     <li><code>impl CryptoHash for <a class="struct" href="../freezer/struct.BlakeWrap.html" title="struct freezer::BlakeWrap">BlakeWrap</a></code></li>
-<li><code>impl CryptoHash for <a class="struct" href="../freezer/struct.VoidHash.html" title="struct freezer::VoidHash">VoidHash</a></code></li>
 </ul><script type="text/javascript" async
                          src="../implementors/freezer/trait.CryptoHash.js">
                  </script></section>

@@ -1,4 +1,5 @@
 (function() {var implementors = {};
+implementors["aodag"] = [];
 implementors["parking_lot"] = [];
 implementors["parking_lot_core"] = [];
 implementors["rand"] = [];

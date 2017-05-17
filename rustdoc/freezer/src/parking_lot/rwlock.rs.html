@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="rustdoc">
-    <meta name="description" content="Source to the Rust file `/home/krl/.cargo/registry/src/github.com-1ecc6299db9ec823/parking_lot-0.4.0/src/rwlock.rs`.">
+    <meta name="description" content="Source to the Rust file `/home/krl/.cargo/registry/src/github.com-1ecc6299db9ec823/parking_lot-0.4.3/src/rwlock.rs`.">
     <meta name="keywords" content="rust, rustlang, rust-lang">
 
     <title>rwlock.rs.html -- source</title>
@@ -847,6 +847,8 @@
 <span id="802">802</span>
 <span id="803">803</span>
 <span id="804">804</span>
+<span id="805">805</span>
+<span id="806">806</span>
 </pre><pre class="rust ">
 <span class="comment">// Copyright 2016 Amanieu d&#39;Antras</span>
 <span class="comment">//</span>
@@ -1322,6 +1324,7 @@
     <span class="attribute">#[<span class="ident">inline</span>]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">unlock_fair</span>(<span class="self">self</span>) {
         <span class="self">self</span>.<span class="ident">rwlock</span>.<span class="ident">raw</span>.<span class="ident">unlock_shared</span>(<span class="bool-val">true</span>);
+        <span class="ident">mem</span>::<span class="ident">forget</span>(<span class="self">self</span>);
     }
 }
 
@@ -1375,6 +1378,7 @@
     <span class="attribute">#[<span class="ident">inline</span>]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">unlock_fair</span>(<span class="self">self</span>) {
         <span class="self">self</span>.<span class="ident">rwlock</span>.<span class="ident">raw</span>.<span class="ident">unlock_exclusive</span>(<span class="bool-val">true</span>);
+        <span class="ident">mem</span>::<span class="ident">forget</span>(<span class="self">self</span>);
     }
 }
 

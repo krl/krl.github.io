@@ -68,10 +68,17 @@ and storing data in backend <code>B</code></p>
                            </td>
                        </tr>
                        <tr class=' module-item'>
-                           <td><a class="struct" href="struct.VoidHash.html"
-                                  title='struct freezer::VoidHash'>VoidHash</a></td>
+                           <td><a class="struct" href="struct.Mutable.html"
+                                  title='struct freezer::Mutable'>Mutable</a></td>
                            <td class='docblock-short'>
-                                <p>Dummy hash function used in tests</p>
+                                <p>A wrapper around a mutable value in the freezer</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.Source.html"
+                                  title='struct freezer::Source'>Source</a></td>
+                           <td class='docblock-short'>
+                                <p>A source to read bytes from</p>
                            </td>
                        </tr></table><h2 id='enums' class='section-header'><a href="#enums">Enums</a></h2>
 <table>
@@ -101,7 +108,7 @@ and storing data in backend <code>B</code></p>
                            <td><a class="trait" href="trait.Freeze.html"
                                   title='trait freezer::Freeze'>Freeze</a></td>
                            <td class='docblock-short'>
-                                <p>Write <code>Self</code> as bytes or read <code>Self</code> from bytes</p>
+                                <p>Write <code>&amp;self</code> as bytes or read <code>Self</code> from bytes</p>
                            </td>
                        </tr>
                        <tr class=' module-item'>
