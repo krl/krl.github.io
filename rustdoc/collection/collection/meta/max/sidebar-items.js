@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["Max","Metadata for the maximum `T` in subtree."]]});

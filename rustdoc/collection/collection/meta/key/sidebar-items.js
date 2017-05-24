@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["Key","A key, K is `T::Key` where `T: Keyed`"],["KeySum","The checksum of the hashes of all keys in collection"],["ValSum","The checksum of the hashes of all values in collection"]],"trait":[["Keyed","This `T` can be viewed as a Key-Value pair."]]});

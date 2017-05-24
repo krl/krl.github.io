@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `collection` crate.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, collection">
+
+    <title>collection - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc mod">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'></p><script>window.sidebarCurrent = {name: 'collection', ty: 'mod', relpath: '../'};</script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content">
+<h1 class='fqn'><span class='in-band'>Crate <a class="mod" href=''>collection</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../src/collection/lib.rs.html#1-37' title='goto source code'>[src]</a></span></h1>
+<div class='docblock'><p>Persistent datastructure</p>
+</div><h2 id='reexports' class='section-header'><a href="#reexports">Reexports</a></h2>
+<table><tr><td><code>pub use meta::<a class="trait" href="../collection/meta/trait.Meta.html" title="trait collection::meta::Meta">Meta</a>;</code></td></tr><tr><td><code>pub use meta::<a class="trait" href="../collection/meta/trait.SubMeta.html" title="trait collection::meta::SubMeta">SubMeta</a>;</code></td></tr><tr><td><code>pub use meta::<a class="struct" href="../collection/meta/max/struct.Max.html" title="struct collection::meta::max::Max">Max</a>;</code></td></tr><tr><td><code>pub use meta::<a class="struct" href="../collection/meta/checksum/struct.CheckSum.html" title="struct collection::meta::checksum::CheckSum">CheckSum</a>;</code></td></tr><tr><td><code>pub use meta::<a class="struct" href="../collection/meta/key/struct.Key.html" title="struct collection::meta::key::Key">Key</a>;</code></td></tr><tr><td><code>pub use meta::<a class="struct" href="../collection/meta/cardinality/struct.Cardinality.html" title="struct collection::meta::cardinality::Cardinality">Cardinality</a>;</code></td></tr></table><h2 id='modules' class='section-header'><a href="#modules">Modules</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="mod" href="meta/index.html"
+                                  title='mod collection::meta'>meta</a></td>
+                           <td class='docblock-short'>
+                                <p>Metadata for collections</p>
+                           </td>
+                       </tr></table><h2 id='macros' class='section-header'><a href="#macros">Macros</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="macro" href="macro.collection.html"
+                                  title='macro collection::collection'>collection</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr></table><h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.BlakeWrap.html"
+                                  title='struct collection::BlakeWrap'>BlakeWrap</a></td>
+                           <td class='docblock-short'>
+                                <p>Wraps Blake2b in the <code>CryptoHash</code> trait</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.Collection.html"
+                                  title='struct collection::Collection'>Collection</a></td>
+                           <td class='docblock-short'>
+                                <p>A collection of elements of type T,
+with metadata of type M.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.Source.html"
+                                  title='struct collection::Source'>Source</a></td>
+                           <td class='docblock-short'>
+                                <p>A source to read bytes from</p>
+                           </td>
+                       </tr></table><h2 id='traits' class='section-header'><a href="#traits">Traits</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="trait" href="trait.CryptoHash.html"
+                                  title='trait collection::CryptoHash'>CryptoHash</a></td>
+                           <td class='docblock-short'>
+                                <p>A wrapper trait for a cryptographic hash function</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="trait" href="trait.Freeze.html"
+                                  title='trait collection::Freeze'>Freeze</a></td>
+                           <td class='docblock-short'>
+                                <p>Write <code>&amp;self</code> as bytes or read <code>Self</code> from bytes</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="trait" href="trait.MapOps.html"
+                                  title='trait collection::MapOps'>MapOps</a></td>
+                           <td class='docblock-short'>
+                                <p>Map operations on a Collection</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="trait" href="trait.MapOpsKeySum.html"
+                                  title='trait collection::MapOpsKeySum'>MapOpsKeySum</a></td>
+                           <td class='docblock-short'>
+                                <p>Operations on a map with <code>KeySum</code> metadata</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="trait" href="trait.SetOps.html"
+                                  title='trait collection::SetOps'>SetOps</a></td>
+                           <td class='docblock-short'>
+                                <p>Set operations on a Collection</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="trait" href="trait.SetOpsCheckSum.html"
+                                  title='trait collection::SetOpsCheckSum'>SetOpsCheckSum</a></td>
+                           <td class='docblock-short'>
+                                <p>Set operations on Checksummed sets</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="trait" href="trait.Sink.html"
+                                  title='trait collection::Sink'>Sink</a></td>
+                           <td class='docblock-short'>
+                                <p>A sink implementation</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="trait" href="trait.VectorOps.html"
+                                  title='trait collection::VectorOps'>VectorOps</a></td>
+                           <td class='docblock-short'>
+                                <p>Vector Operations on a Collection</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="trait" href="trait.Weight.html"
+                                  title='trait collection::Weight'>Weight</a></td>
+                           <td class='docblock-short'>
+                                <p>The &quot;weight&quot; of an element, should produce a uniform distribution from the
+possible values of the type implementing this trait.</p>
+                           </td>
+                       </tr></table></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../";
+        window.currentCrate = "collection";
+    </script>
+    <script src="../jquery.js"></script>
+    <script src="../main.js"></script>
+    <script defer src="../search-index.js"></script>
+</body>
+</html>

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `Freeze` trait in crate `collection`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, Freeze">
+
+    <title>collection::Freeze - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc trait">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'><a href='index.html'>collection</a></p><script>window.sidebarCurrent = {name: 'Freeze', ty: 'trait', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content">
+<h1 class='fqn'><span class='in-band'>Trait <a href='index.html'>collection</a>::<wbr><a class="trait" href=''>Freeze</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../src/freezer/freezer.rs.html#47-55' title='goto source code'>[src]</a></span></h1>
+<pre class='rust trait'>pub trait Freeze&lt;H&gt;: <a class="trait" href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html" title="trait core::clone::Clone">Clone</a> + <a class="trait" href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html" title="trait core::clone::Clone">Clone</a> <span class="where fmt-newline">where H: <a class="trait" href="../collection/trait.CryptoHash.html" title="trait collection::CryptoHash">CryptoHash</a></span> {
+    fn <a href='#tymethod.freeze' class='fnname'>freeze</a>(&amp;self, into: &amp;mut <a class="trait" href="../collection/trait.Sink.html" title="trait collection::Sink">Sink</a>&lt;H&gt;) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">()</a>, <a class="struct" href="https://doc.rust-lang.org/nightly/std/io/error/struct.Error.html" title="struct std::io::error::Error">Error</a>&gt;;
+    fn <a href='#tymethod.thaw' class='fnname'>thaw</a>(from: &amp;mut <a class="struct" href="../collection/struct.Source.html" title="struct collection::Source">Source</a>&lt;H&gt;) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;Self, <a class="struct" href="https://doc.rust-lang.org/nightly/std/io/error/struct.Error.html" title="struct std::io::error::Error">Error</a>&gt;;
+}</pre><div class='docblock'><p>Write <code>&amp;self</code> as bytes or read <code>Self</code> from bytes</p>
+</div>
+            <h2 id='required-methods'>Required Methods</h2>
+            <div class='methods'>
+        <h3 id='tymethod.freeze' class='method'><span id='freeze.v' class='invisible'><code>fn <a href='#tymethod.freeze' class='fnname'>freeze</a>(&amp;self, into: &amp;mut <a class="trait" href="../collection/trait.Sink.html" title="trait collection::Sink">Sink</a>&lt;H&gt;) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">()</a>, <a class="struct" href="https://doc.rust-lang.org/nightly/std/io/error/struct.Error.html" title="struct std::io::error::Error">Error</a>&gt;</code></span></h3><div class='docblock'><p>Write <code>&amp;self</code> to <code>Sink</code></p>
+</div><h3 id='tymethod.thaw' class='method'><span id='thaw.v' class='invisible'><code>fn <a href='#tymethod.thaw' class='fnname'>thaw</a>(from: &amp;mut <a class="struct" href="../collection/struct.Source.html" title="struct collection::Source">Source</a>&lt;H&gt;) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;Self, <a class="struct" href="https://doc.rust-lang.org/nightly/std/io/error/struct.Error.html" title="struct std::io::error::Error">Error</a>&gt;</code></span></h3><div class='docblock'><p>Read <code>Self</code> from <code>Source</code></p>
+</div></div>
+        <h2 id='implementors'>Implementors</h2>
+        <ul class='item-list' id='implementors-list'>
+    <li><code>impl&lt;H&gt; Freeze&lt;H&gt; for <a class="enum" href="../freezer/freezer/enum.Location.html" title="enum freezer::freezer::Location">Location</a>&lt;H&gt; <span class="where fmt-newline">where H: <a class="trait" href="../collection/trait.CryptoHash.html" title="trait collection::CryptoHash">CryptoHash</a>, H::<a class="trait" href="../collection/trait.CryptoHash.html" title="trait collection::CryptoHash">Digest</a>: <a class="trait" href="../collection/trait.Freeze.html" title="trait collection::Freeze">Freeze</a>&lt;H&gt;</span></code></li>
+<li><code>impl&lt;H&gt; Freeze&lt;H&gt; for <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a> <span class="where fmt-newline">where H: <a class="trait" href="../collection/trait.CryptoHash.html" title="trait collection::CryptoHash">CryptoHash</a></span></code></li>
+<li><code>impl&lt;T, H&gt; Freeze&lt;H&gt; for <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;T&gt; <span class="where fmt-newline">where H: <a class="trait" href="../collection/trait.CryptoHash.html" title="trait collection::CryptoHash">CryptoHash</a>, T: <a class="trait" href="../collection/trait.Freeze.html" title="trait collection::Freeze">Freeze</a>&lt;H&gt;</span></code></li>
+<li><code>impl&lt;H&gt; Freeze&lt;H&gt; for <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a> <span class="where fmt-newline">where H: <a class="trait" href="../collection/trait.CryptoHash.html" title="trait collection::CryptoHash">CryptoHash</a></span></code></li>
+<li><code>impl&lt;H&gt; Freeze&lt;H&gt; for <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.isize.html">isize</a> <span class="where fmt-newline">where H: <a class="trait" href="../collection/trait.CryptoHash.html" title="trait collection::CryptoHash">CryptoHash</a></span></code></li>
+<li><code>impl&lt;H&gt; Freeze&lt;H&gt; for <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u64.html">u64</a> <span class="where fmt-newline">where H: <a class="trait" href="../collection/trait.CryptoHash.html" title="trait collection::CryptoHash">CryptoHash</a></span></code></li>
+<li><code>impl&lt;H&gt; Freeze&lt;H&gt; for <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a> <span class="where fmt-newline">where H: <a class="trait" href="../collection/trait.CryptoHash.html" title="trait collection::CryptoHash">CryptoHash</a></span></code></li>
+<li><code>impl&lt;H&gt; Freeze&lt;H&gt; for <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u16.html">u16</a> <span class="where fmt-newline">where H: <a class="trait" href="../collection/trait.CryptoHash.html" title="trait collection::CryptoHash">CryptoHash</a></span></code></li>
+<li><code>impl&lt;H&gt; Freeze&lt;H&gt; for <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i64.html">i64</a> <span class="where fmt-newline">where H: <a class="trait" href="../collection/trait.CryptoHash.html" title="trait collection::CryptoHash">CryptoHash</a></span></code></li>
+<li><code>impl&lt;H&gt; Freeze&lt;H&gt; for <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a> <span class="where fmt-newline">where H: <a class="trait" href="../collection/trait.CryptoHash.html" title="trait collection::CryptoHash">CryptoHash</a></span></code></li>
+<li><code>impl&lt;H&gt; Freeze&lt;H&gt; for <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i16.html">i16</a> <span class="where fmt-newline">where H: <a class="trait" href="../collection/trait.CryptoHash.html" title="trait collection::CryptoHash">CryptoHash</a></span></code></li>
+<li><code>impl&lt;T, M, H, B&gt; Freeze&lt;H&gt; for <a class="struct" href="../collection/struct.Collection.html" title="struct collection::Collection">Collection</a>&lt;T, M, H, B&gt; <span class="where fmt-newline">where T: <a class="trait" href="../collection/trait.Weight.html" title="trait collection::Weight">Weight</a> + <a class="trait" href="../collection/trait.Freeze.html" title="trait collection::Freeze">Freeze</a>&lt;H&gt;,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;M: <a class="trait" href="../collection/meta/trait.Meta.html" title="trait collection::meta::Meta">Meta</a>&lt;T&gt; + <a class="trait" href="../collection/trait.Freeze.html" title="trait collection::Freeze">Freeze</a>&lt;H&gt;,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;H: <a class="trait" href="../collection/trait.CryptoHash.html" title="trait collection::CryptoHash">CryptoHash</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;B: <a class="trait" href="../freezer/backend/trait.Backend.html" title="trait freezer::backend::Backend">Backend</a>&lt;Node&lt;T, M, H&gt;, H&gt; + <a class="trait" href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html" title="trait core::clone::Clone">Clone</a></span></code></li>
+<li><code>impl&lt;T, H&gt; Freeze&lt;H&gt; for <a class="struct" href="../collection/meta/cardinality/struct.Cardinality.html" title="struct collection::meta::cardinality::Cardinality">Cardinality</a>&lt;T&gt; <span class="where fmt-newline">where H: <a class="trait" href="../collection/trait.CryptoHash.html" title="trait collection::CryptoHash">CryptoHash</a>, T: <a class="trait" href="../collection/trait.Freeze.html" title="trait collection::Freeze">Freeze</a>&lt;H&gt;</span></code></li>
+<li><code>impl&lt;T, H&gt; Freeze&lt;H&gt; for <a class="struct" href="../collection/meta/max/struct.Max.html" title="struct collection::meta::max::Max">Max</a>&lt;T&gt; <span class="where fmt-newline">where H: <a class="trait" href="../collection/trait.CryptoHash.html" title="trait collection::CryptoHash">CryptoHash</a>, T: <a class="trait" href="../collection/trait.Freeze.html" title="trait collection::Freeze">Freeze</a>&lt;H&gt;</span></code></li>
+<li><code>impl&lt;T, H&gt; Freeze&lt;H&gt; for <a class="struct" href="../collection/meta/key/struct.KeySum.html" title="struct collection::meta::key::KeySum">KeySum</a>&lt;T&gt; <span class="where fmt-newline">where H: <a class="trait" href="../collection/trait.CryptoHash.html" title="trait collection::CryptoHash">CryptoHash</a>, T: <a class="trait" href="../collection/trait.Freeze.html" title="trait collection::Freeze">Freeze</a>&lt;H&gt;</span></code></li>
+<li><code>impl&lt;T, H&gt; Freeze&lt;H&gt; for <a class="struct" href="../collection/meta/key/struct.ValSum.html" title="struct collection::meta::key::ValSum">ValSum</a>&lt;T&gt; <span class="where fmt-newline">where H: <a class="trait" href="../collection/trait.CryptoHash.html" title="trait collection::CryptoHash">CryptoHash</a>, T: <a class="trait" href="../collection/trait.Freeze.html" title="trait collection::Freeze">Freeze</a>&lt;H&gt;</span></code></li>
+<li><code>impl&lt;K, H&gt; Freeze&lt;H&gt; for <a class="struct" href="../collection/meta/key/struct.Key.html" title="struct collection::meta::key::Key">Key</a>&lt;K&gt; <span class="where fmt-newline">where H: <a class="trait" href="../collection/trait.CryptoHash.html" title="trait collection::CryptoHash">CryptoHash</a>, K: <a class="trait" href="../collection/trait.Freeze.html" title="trait collection::Freeze">Freeze</a>&lt;H&gt;</span></code></li>
+<li><code>impl&lt;T, H&gt; Freeze&lt;H&gt; for <a class="struct" href="../collection/meta/checksum/struct.CheckSum.html" title="struct collection::meta::checksum::CheckSum">CheckSum</a>&lt;T&gt; <span class="where fmt-newline">where H: <a class="trait" href="../collection/trait.CryptoHash.html" title="trait collection::CryptoHash">CryptoHash</a>, T: <a class="trait" href="../collection/trait.Freeze.html" title="trait collection::Freeze">Freeze</a>&lt;H&gt;</span></code></li>
+</ul><script type="text/javascript" async
+                         src="../implementors/freezer/freezer/trait.Freeze.js">
+                 </script></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../";
+        window.currentCrate = "collection";
+    </script>
+    <script src="../jquery.js"></script>
+    <script src="../main.js"></script>
+    <script defer src="../search-index.js"></script>
+</body>
+</html>

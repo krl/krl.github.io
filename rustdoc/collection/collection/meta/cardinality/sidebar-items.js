@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["Cardinality","Wrapper type for the value storing the cardinality of subtrees"]]});
