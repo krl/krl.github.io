@@ -102,7 +102,7 @@
 
 <span class="kw">use</span> <span class="ident">blake2_rfc</span>::<span class="ident">blake2b</span>;
 
-<span class="kw">use</span> {<span class="ident">CryptoHash</span>, <span class="ident">CryptoHashState</span>};
+<span class="kw">use</span> {<span class="ident">CryptoHash</span>, <span class="ident">State</span>};
 
 <span class="doccomment">/// Wraps Blake2b in the `CryptoHash` trait</span>
 <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Clone</span>)]</span>
@@ -117,10 +117,10 @@
     }
 }
 
-<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">PartialEq</span>, <span class="ident">Eq</span>, <span class="ident">Clone</span>)]</span>
+<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">PartialEq</span>, <span class="ident">Eq</span>, <span class="ident">PartialOrd</span>, <span class="ident">Ord</span>, <span class="ident">Clone</span>)]</span>
 <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">BlakeDigestWrap</span>([<span class="ident">u8</span>; <span class="number">32</span>]);
 
-<span class="kw">impl</span> <span class="ident">CryptoHashState</span><span class="op">&lt;</span><span class="ident">BlakeDigestWrap</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">blake2b</span>::<span class="ident">Blake2b</span> {
+<span class="kw">impl</span> <span class="ident">State</span><span class="op">&lt;</span><span class="ident">BlakeDigestWrap</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">blake2b</span>::<span class="ident">Blake2b</span> {
     <span class="kw">fn</span> <span class="ident">fin</span>(<span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">BlakeDigestWrap</span> {
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">bytes</span>: [<span class="ident">u8</span>; <span class="number">32</span>];
 

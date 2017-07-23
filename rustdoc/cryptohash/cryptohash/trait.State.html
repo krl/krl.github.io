@@ -4,10 +4,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="rustdoc">
-    <meta name="description" content="API documentation for the Rust `cryptohash` crate.">
-    <meta name="keywords" content="rust, rustlang, rust-lang, cryptohash">
+    <meta name="description" content="API documentation for the Rust `State` trait in crate `cryptohash`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, State">
 
-    <title>cryptohash - Rust</title>
+    <title>cryptohash::State - Rust</title>
 
     <link rel="stylesheet" type="text/css" href="../normalize.css">
     <link rel="stylesheet" type="text/css" href="../rustdoc.css">
@@ -17,7 +17,7 @@
     
     
 </head>
-<body class="rustdoc mod">
+<body class="rustdoc trait">
     <!--[if lte IE 8]>
     <div class="warning">
         This old browser is unsupported and will most likely display funky
@@ -29,7 +29,7 @@
 
     <nav class="sidebar">
         
-        <p class='location'>Crate cryptohash</p><div class="block items"><ul><li><a href="#structs">Structs</a></li><li><a href="#traits">Traits</a></li></ul></div><p class='location'></p><script>window.sidebarCurrent = {name: 'cryptohash', ty: 'mod', relpath: '../'};</script>
+        <p class='location'>Trait State</p><div class="block items"><ul><li><a href="#required-methods">Required Methods</a></li><li><a href="#implementors">Implementors</a></li></ul></div><p class='location'><a href='index.html'>cryptohash</a></p><script>window.sidebarCurrent = {name: 'State', ty: 'trait', relpath: ''};</script><script defer src="sidebar-items.js"></script>
     </nav>
 
     <nav class="sub">
@@ -44,36 +44,24 @@
     </nav>
 
     <section id='main' class="content">
-<h1 class='fqn'><span class='in-band'>Crate <a class="mod" href=''>cryptohash</a></span><span class='out-of-band'><span id='render-detail'>
+<h1 class='fqn'><span class='in-band'>Trait <a href='index.html'>cryptohash</a>::<wbr><a class="trait" href=''>State</a></span><span class='out-of-band'><span id='render-detail'>
                    <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
                        [<span class='inner'>&#x2212;</span>]
                    </a>
-               </span><a class='srclink' href='../src/cryptohash/lib.rs.html#1-47' title='goto source code'>[src]</a></span></h1>
-<div class='docblock'><p>Trait abstracting over cryptographic hash-functions.</p>
-</div><h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
-<table>
-                       <tr class=' module-item'>
-                           <td><a class="struct" href="struct.Blake2b.html"
-                                  title='struct cryptohash::Blake2b'>Blake2b</a></td>
-                           <td class='docblock-short'>
-                                <p>Wraps Blake2b in the <code>CryptoHash</code> trait</p>
-                           </td>
-                       </tr></table><h2 id='traits' class='section-header'><a href="#traits">Traits</a></h2>
-<table>
-                       <tr class=' module-item'>
-                           <td><a class="trait" href="trait.CryptoHash.html"
-                                  title='trait cryptohash::CryptoHash'>CryptoHash</a></td>
-                           <td class='docblock-short'>
-                                <p>A wrapper trait for cryptographic hash functions</p>
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="trait" href="trait.State.html"
-                                  title='trait cryptohash::State'>State</a></td>
-                           <td class='docblock-short'>
-                                <p>The trait for a hash state</p>
-                           </td>
-                       </tr></table></section>
+               </span><a class='srclink' href='../src/cryptohash/lib.rs.html#11-16' title='goto source code'>[src]</a></span></h1>
+<pre class='rust trait'>pub trait State&lt;Digest&gt; <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;Digest: <a class="trait" href="https://doc.rust-lang.org/nightly/core/convert/trait.AsRef.html" title="trait core::convert::AsRef">AsRef</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">[</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">]</a>&gt;,&nbsp;</span>{
+    fn <a href='#tymethod.fin' class='fnname'>fin</a>(self) -&gt; Digest;
+}</pre><div class='docblock'><p>The trait for a hash state</p>
+</div>
+            <h2 id='required-methods'>Required Methods</h2>
+            <div class='methods'>
+        <h3 id='tymethod.fin' class='method'><span id='fin.v' class='invisible'><code>fn <a href='#tymethod.fin' class='fnname'>fin</a>(self) -&gt; Digest</code></span></h3></div>
+        <h2 id='implementors'>Implementors</h2>
+        <ul class='item-list' id='implementors-list'>
+    <li><code>impl State&lt;BlakeDigestWrap&gt; for <a class="struct" href="../blake2_rfc/blake2b/struct.Blake2b.html" title="struct blake2_rfc::blake2b::Blake2b">Blake2b</a></code></li>
+</ul><script type="text/javascript" async
+                         src="../implementors/cryptohash/trait.State.js">
+                 </script></section>
     <section id='search' class="content hidden"></section>
 
     <section class="footer"></section>
