@@ -653,7 +653,7 @@
 <span class="kw">const</span> <span class="ident">ALIGNMENT</span>: <span class="ident">usize</span> <span class="op">=</span> <span class="number">8</span>;
 <span class="kw">const</span> <span class="ident">TRIES</span>: <span class="ident">usize</span> <span class="op">=</span> <span class="number">8</span>;
 
-<span class="kw">fn</span> <span class="ident">wrap_drop</span><span class="op">&lt;</span><span class="ident">V</span>: <span class="ident">fmt</span>::<span class="ident">Debug</span><span class="op">&gt;</span>(<span class="ident">ptr</span>: <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">ManuallyDrop</span><span class="op">&lt;</span><span class="ident">u8</span><span class="op">&gt;</span>) {
+<span class="kw">fn</span> <span class="ident">wrap_drop</span><span class="op">&lt;</span><span class="ident">V</span><span class="op">&gt;</span>(<span class="ident">ptr</span>: <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">ManuallyDrop</span><span class="op">&lt;</span><span class="ident">u8</span><span class="op">&gt;</span>) {
     <span class="kw">unsafe</span> {
         <span class="kw">let</span> <span class="ident">ptr</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">ManuallyDrop</span><span class="op">&lt;</span><span class="ident">V</span><span class="op">&gt;</span> <span class="op">=</span> <span class="ident">mem</span>::<span class="ident">transmute</span>(<span class="ident">ptr</span>);
         <span class="ident">ManuallyDrop</span>::<span class="ident">drop</span>(<span class="ident">ptr</span>);
@@ -673,7 +673,7 @@
     <span class="ident">val</span>: <span class="ident">ManuallyDrop</span><span class="op">&lt;</span><span class="ident">V</span><span class="op">&gt;</span>,
 }
 
-<span class="kw">impl</span><span class="op">&lt;</span><span class="ident">K</span>, <span class="ident">V</span>: <span class="lifetime">&#39;static</span> <span class="op">+</span> <span class="ident">fmt</span>::<span class="ident">Debug</span><span class="op">&gt;</span> <span class="ident">Entry</span><span class="op">&lt;</span><span class="ident">K</span>, <span class="ident">V</span><span class="op">&gt;</span> {
+<span class="kw">impl</span><span class="op">&lt;</span><span class="ident">K</span>, <span class="ident">V</span>: <span class="lifetime">&#39;static</span><span class="op">&gt;</span> <span class="ident">Entry</span><span class="op">&lt;</span><span class="ident">K</span>, <span class="ident">V</span><span class="op">&gt;</span> {
     <span class="kw">fn</span> <span class="ident">new</span>(<span class="ident">key</span>: <span class="ident">K</span>, <span class="ident">val</span>: <span class="ident">V</span>) <span class="op">-&gt;</span> <span class="self">Self</span> {
         <span class="kw">let</span> <span class="ident">val</span> <span class="op">=</span> <span class="ident">ManuallyDrop</span>::<span class="ident">new</span>(<span class="ident">val</span>);
         <span class="ident">Entry</span> {
@@ -743,7 +743,7 @@
     <span class="doccomment">///</span>
     <span class="doccomment">/// *NOTE* If you insert different values under the same key, you will only</span>
     <span class="doccomment">/// get one of them out again. Updates are not possible.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">insert</span><span class="op">&lt;</span><span class="ident">V</span>: <span class="lifetime">&#39;static</span> <span class="op">+</span> <span class="ident">fmt</span>::<span class="ident">Debug</span><span class="op">&gt;</span>(
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">insert</span><span class="op">&lt;</span><span class="ident">V</span>: <span class="lifetime">&#39;static</span><span class="op">&gt;</span>(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
         <span class="ident">key</span>: <span class="ident">K</span>,
         <span class="ident">val</span>: <span class="ident">V</span>,
@@ -754,7 +754,7 @@
     }
 
     <span class="doccomment">/// Is this value in the cache?</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">get</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">V</span>: <span class="lifetime">&#39;static</span> <span class="op">+</span> <span class="ident">fmt</span>::<span class="ident">Debug</span><span class="op">&gt;</span>(
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">get</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">V</span>: <span class="lifetime">&#39;static</span><span class="op">&gt;</span>(
         <span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="self">self</span>,
         <span class="ident">key</span>: <span class="kw-2">&amp;</span><span class="ident">K</span>,
     ) <span class="op">-&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Reference</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">V</span><span class="op">&gt;&gt;</span> {
@@ -814,7 +814,7 @@
         }
     }
 
-    <span class="kw">fn</span> <span class="ident">offset</span><span class="op">&lt;</span><span class="ident">V</span>: <span class="lifetime">&#39;static</span> <span class="op">+</span> <span class="ident">fmt</span>::<span class="ident">Debug</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">hash</span>: <span class="ident">u64</span>) <span class="op">-&gt;</span> <span class="ident">usize</span> {
+    <span class="kw">fn</span> <span class="ident">offset</span><span class="op">&lt;</span><span class="ident">V</span>: <span class="lifetime">&#39;static</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">hash</span>: <span class="ident">u64</span>) <span class="op">-&gt;</span> <span class="ident">usize</span> {
         <span class="kw">let</span> <span class="ident">size</span> <span class="op">=</span> <span class="ident">Entry</span>::<span class="op">&lt;</span><span class="ident">K</span>, <span class="ident">V</span><span class="op">&gt;</span>::<span class="ident">size</span>();
         <span class="kw">let</span> <span class="ident">offset</span> <span class="op">=</span> (<span class="ident">hash</span> <span class="kw">as</span> <span class="ident">usize</span> <span class="op">%</span> (<span class="self">self</span>.<span class="ident">size</span> <span class="op">/</span> <span class="ident">ALIGNMENT</span>)) <span class="op">*</span> <span class="ident">ALIGNMENT</span>;
         <span class="kw">if</span> <span class="ident">offset</span> <span class="op">+</span> <span class="ident">size</span> <span class="op">&gt;</span> <span class="self">self</span>.<span class="ident">size</span> {
@@ -825,7 +825,7 @@
         }
     }
 
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">insert</span><span class="op">&lt;</span><span class="ident">V</span>: <span class="lifetime">&#39;static</span> <span class="op">+</span> <span class="ident">fmt</span>::<span class="ident">Debug</span><span class="op">&gt;</span>(
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">insert</span><span class="op">&lt;</span><span class="ident">V</span>: <span class="lifetime">&#39;static</span><span class="op">&gt;</span>(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
         <span class="ident">hash</span>: <span class="ident">u64</span>,
         <span class="ident">key</span>: <span class="ident">K</span>,
@@ -1014,7 +1014,7 @@
             .<span class="ident">map</span>(<span class="op">|</span>(_, <span class="ident">val</span>)<span class="op">|</span> <span class="ident">mem</span>::<span class="ident">replace</span>(<span class="ident">val</span>, <span class="macro">vec</span><span class="macro">!</span>[]))
     }
 
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">get</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">V</span>: <span class="lifetime">&#39;static</span> <span class="op">+</span> <span class="ident">fmt</span>::<span class="ident">Debug</span><span class="op">&gt;</span>(
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">get</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">V</span>: <span class="lifetime">&#39;static</span><span class="op">&gt;</span>(
         <span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="self">self</span>,
         <span class="ident">hash</span>: <span class="ident">u64</span>,
         <span class="ident">key</span>: <span class="kw-2">&amp;</span><span class="ident">K</span>,
