@@ -1,0 +1,1 @@
+initSidebarItems({"constant":[["EMPTY","An arbitrary non-null address to represent zero-size allocations."]],"fn":[["allocate","Return a pointer to `size` bytes of memory aligned to `align`."],["deallocate","Deallocates the memory referenced by `ptr`."]]});
