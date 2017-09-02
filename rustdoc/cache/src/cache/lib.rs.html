@@ -626,6 +626,9 @@
 <span id="581">581</span>
 <span id="582">582</span>
 <span id="583">583</span>
+<span id="584">584</span>
+<span id="585">585</span>
+<span id="586">586</span>
 </pre><pre class="rust ">
 <span class="doccomment">//! In-memory fixed-size cache for arbitrary types.</span>
 <span class="doccomment">//!</span>
@@ -737,6 +740,9 @@
 
     <span class="doccomment">/// Insert a value `V` into cache with key `K`, returns a `Reference` to</span>
     <span class="doccomment">/// the newly stored or spilled value</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// *NOTE* If you insert different values under the same key, you will only</span>
+    <span class="doccomment">/// get one of them out again. Updates are not possible.</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">insert</span><span class="op">&lt;</span><span class="ident">V</span>: <span class="lifetime">&#39;static</span> <span class="op">+</span> <span class="ident">fmt</span>::<span class="ident">Debug</span><span class="op">&gt;</span>(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
         <span class="ident">key</span>: <span class="ident">K</span>,
